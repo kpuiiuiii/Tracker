@@ -1,32 +1,35 @@
 <%= form_with(model: entry) do |form| %>
   <% if entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
-
-      <ul>
-        <% entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="message is-danger">
+      <div class="message-header">
+          <p><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</p>
+        </div>
+        <div class="messaage-body">
+          <ul>
+            <% entry.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :expense_type %>
+    <%= form.label :expense_type, class: "label" %>
     <%= form.text_field :expense_type %>
   </div>
 
   <div class="field">
-    <%= form.label :classification %>
+    <%= form.label :classification, class: "label" %>
     <%= form.text_field :classification %>
   </div>
 
   <div class="field">
-    <%= form.label :amount %>
+    <%= form.label :amount, class: "label" %>
     <%= form.number_field :amount %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "button is-success" %>
   </div>
 <% end %>
